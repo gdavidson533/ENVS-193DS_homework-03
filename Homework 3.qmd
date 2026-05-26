@@ -1,0 +1,5 @@
+---
+title: "Homework 3"
+format: pdf
+editor: visual
+---
