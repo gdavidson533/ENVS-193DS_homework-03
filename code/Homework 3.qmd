@@ -83,13 +83,14 @@ cor.test(kelp$temp_c, # predictor variable: ocean temperature
 
 ## 1d.
 
-To evaluate the strength of the relationship between ocean temperature and giant kelp frond elongation rate, I used a Pearson correlation coefficient because both variables are continuous and approximately normally distributed, and the scatterplot suggested a linear relationship between them.
-Ocean temperature was significantly negatively correlated with giant kelp frond elongation rate, meaning that kelp growing in warmer water tended to have slower growth rates (Pearson's r = -0.69, t(30) = -5.19, p < 0.001). This suggests that as ocean temperatures increase due to climate change, we would expect giant kelp fronds to grow more slowly, which could have important consequences for the overall health and structure of kelp forest ecosystems.
+To evaluate the strength of the relationship between ocean temperature and giant kelp frond elongation rate, I used a Pearson correlation coefficient because both variables are continuous and approximately normally distributed, and the scatterplot suggested a linear relationship between them. Ocean temperature was significantly negatively correlated with giant kelp frond elongation rate, meaning that kelp growing in warmer water tended to have slower growth rates (Pearson's r = -0.69, t(30) = -5.19, p \< 0.001). This suggests that as ocean temperatures increase due to climate change, we would expect giant kelp fronds to grow more slowly, which could have important consequences for the overall health and structure of kelp forest ecosystems.
 
 ## 1e. Test implications
+
 Our results indicate that higher ocean temperatures are associated with significantly lower giant kelp frond elongation rates, suggesting that ongoing ocean warming due to climate change may slow kelp growth. This is critical for our team to understand because reduced growth rates could diminish kelp forest biomass and structural complexity over time, threatening the many species that depend on these ecosystems. As ocean temperatures continue to rise, we should prioritize monitoring kelp growth rates in warmer regions as early indicators of broader kelp forest decline.
 
 ## 1f. Double check your own work
+
 ```{r}
 #| label: kelp_spearman
 # run Spearman rank correlation as the alternative non-parametric test
@@ -99,9 +100,9 @@ cor.test(kelp$temp_c, # predictor variable: ocean temperature
          method = "spearman") # specify Spearman method
 ```
 
-Both the Pearson correlation (r = -0.69, t(30) = -5.19, p < 0.001) and the Spearman rank correlation (rho = -0.69, S = 9216.1, p < 0.001) led to the same decision to reject the null hypothesis that there is no relationship between ocean temperature and giant kelp frond elongation rate. Both tests revealed a strong negative relationship of nearly identical magnitude, meaning that both would lead to the same interpretation that higher ocean temperatures are associated with lower kelp frond elongation rates. The close agreement between the two tests strengthens confidence in the conclusion, as the Pearson result indicates the relationship is linear while the Spearman result confirms it is also monotonic.
+Both the Pearson correlation (r = -0.69, t(30) = -5.19, p \< 0.001) and the Spearman rank correlation (rho = -0.69, S = 9216.1, p \< 0.001) led to the same decision to reject the null hypothesis that there is no relationship between ocean temperature and giant kelp frond elongation rate. Both tests revealed a strong negative relationship of nearly identical magnitude, meaning that both would lead to the same interpretation that higher ocean temperatures are associated with lower kelp frond elongation rates. The close agreement between the two tests strengthens confidence in the conclusion, as the Pearson result indicates the relationship is linear while the Spearman result confirms it is also monotonic.
 
-# Problem 2. Personal Data 
+# Problem 2. Personal Data
 
 ## 2a. Updating visualizations
 
@@ -150,7 +151,6 @@ ggplot() +
         panel.grid.minor = element_blank()) # reduce visual clutter
 ```
 
-
 ```{r}
 
 # plot water intake vs focus level as scatterplot with trend line
@@ -172,31 +172,37 @@ ggplot(data = my_data,
 
 ## 2b. Captions
 
-Figure 1. Focus level (1–5 scale) on work days versus non-work days, based on 13 days of personal observations. Points show individual daily observations, larger points show group means, and error bars represent ± 1 standard deviation. Focus level was slightly lower on work days compared to non-work days, with greater variability on work days.
-Figure 2. Relationship between daily water intake (liters) and focus level (1–5 scale) across 13 days of personal observation. Each point represents one day. A positive association between water intake and focus level is visible, suggesting that higher water intake may be associated with higher focus, though the sample size is small and this pattern should be interpreted cautiously.
+Figure 1. Focus level (1–5 scale) on work days versus non-work days, based on 13 days of personal observations. Points show individual daily observations, larger points show group means, and error bars represent ± 1 standard deviation. Focus level was slightly lower on work days compared to non-work days, with greater variability on work days. Figure 2. Relationship between daily water intake (liters) and focus level (1–5 scale) across 13 days of personal observation. Each point represents one day. A positive association between water intake and focus level is visible, suggesting that higher water intake may be associated with higher focus, though the sample size is small and this pattern should be interpreted cautiously.
 
 # Problem 3. Affective visualization
 
 ## 3a. Description
+
 An affective visualization for my personal data could take the form of a hand-drawn weekly calendar where each day is represented as a water droplet shape, with the size of the droplet corresponding to how much water I drank that day and the color (ranging from pale yellow to deep blue) representing my focus level for that day. Days where I worked could be marked with a small sun icon, while rest days could have a moon. This format would make the data feel personal and embodied — the viewer would literally see how "full" or "energized" each day felt, connecting hydration and mental energy in an intuitive visual language that goes beyond what a standard chart could convey.
 
 ## 3b. Sketch
+
 ![Initial Sketch for drawing](../sketch.png)
 
-## 3c. Draft 
-![Draft of effective visualization ](../draft.png)
+## 3c. Draft
+
+![Draft of effective visualization, this is for only 13 days but the full one would be 30](../draft.png)
 
 ## 3d. Artist Statement
-Content: This piece shows 13 days of personal observations tracking daily water intake and focus level, with additional variables including number of study sessions and whether the day was a work day or rest day, exploring whether staying hydrated is associated with feeling more mentally focused.
-Influences: I was directly influenced by Stefanie Posavec and Giorgia Lupi's Dear Data project, which encodes personal behavioral data into dense hand-drawn postcards using repeated simple shapes with a legend, making data feel intimate and personal rather than clinical.
-Form: The piece is a hand-drawn postcard created with colored pencils and pen on paper, designed to be small and personal in the style of Dear Data.
-Process: I first mapped each variable to a visual element — water intake to fill level, focus to color, study sessions to bubbles, and work day to sun or moon symbols. I then sketched all 13 glasses in pencil, added the water fill and color for each day using the data table, drew the bubbles and symbols, and finished with a hand-drawn legend in the corner.
 
+Content: This piece shows 13 days of personal observations tracking daily water intake and focus level, with additional variables including number of study sessions and whether the day was a work day or rest day, exploring whether staying hydrated is associated with feeling more mentally focused. Influences: I was directly influenced by Stefanie Posavec and Giorgia Lupi's Dear Data project, which encodes personal behavioral data into dense hand-drawn postcards using repeated simple shapes with a legend, making data feel intimate and personal rather than clinical. Form: The piece is a hand-drawn postcard created with colored pencils and pen on paper, designed to be small and personal in the style of Dear Data. Process: I first mapped each variable to a visual element — water intake to fill level, focus to color, study sessions to bubbles, and work day to sun or moon symbols. I then sketched all 13 glasses in pencil, added the water fill and color for each day using the data table, drew the bubbles and symbols, and finished with a hand-drawn legend in the corner.
 
 ## 3e. Slides
 
 [View slides here](https://canva.link/nfhwbs3ko47iwd1)
 
+# Problem 4. Statistical critique
 
+## 4a. Revisit and summarize
 
+The authors of Estrada-Araoz et al. 2023 use the Pearson correlation coefficient to address their main research question of whether environmental education is significantly related to pro-environmental behavior in regular basic education students in the Peruvian Amazon. The response variable is pro-environmental behavior score and the predictor variable is environmental education score, both measured via questionnaire. The Pearson correlation tests whether there is a significant linear relationship between the two scores, and a significant result (p < 0.05) would indicate that students who perceive their environmental education as more adequate also tend to engage in pro-environmental behaviors more frequently.
+
+![Table 4 from Estrada-Araoz et al. 2023 showing Pearson correlation 
+coefficients between environmental education and pro-environmental 
+behavior variables.](../table4.png)
 
