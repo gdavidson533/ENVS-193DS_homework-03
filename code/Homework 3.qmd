@@ -1,0 +1,86 @@
+---
+title: "Homework 3"
+format: pdf
+editor: visual
+author: "gabriela davidson"
+date: "4-26-2026"
+---
+
+# Set up
+
+```{r}
+#| label: set_up
+#| message: false
+
+# read in tidyverse for data wrangling and visualization
+library(tidyverse)
+# read in here for reproducible file paths
+library(here)
+# read in janitor for cleaning column names
+library(janitor)
+
+# read in kelp data from data folder
+kelp <- read_csv(here("data", "temp-kelp.csv"))
+
+# read in personal data from data folder
+my_data <- read_csv(here("data", "MyData_Homework3.csv"))
+```
+
+# Problem 1: Giant kelp fronds
+
+## 1a. An appropriate test
+
+The two appropriate tests to determine the strength of the relationship between ocean temperature and giant kelp frond elongation rate are the Pearson correlation coefficient and the Spearman rank correlation coefficient. The Pearson correlation measures the strength and direction of a linear relationship between two continuous variables and assumes that both variables are normally distributed. The Spearman rank correlation is a non-parametric alternative that measures the strength of a monotonic relationship between ocean temperature and elongation rate without assuming normality, making it appropriate if the normality assumption for Pearson is violated.
+
+## 1b. Create a visualization
+
+```{r}
+#| label: kelp_visualization
+
+# create scatterplot of ocean temperature vs kelp frond elongation rate
+ggplot(data = kelp, # use kelp data frame
+       aes(x = temp_c, # ocean temperature on x-axis
+           y = kelp_elong)) + # elongation rate on y-axis
+  geom_point(color = "darkgreen", # non-default point color
+             size = 3,
+             alpha = 0.7) + # slight transparency on points
+  geom_smooth(method = "lm", # add linear trend line
+              color = "darkorange", # non-default line color
+              fill = "lightyellow", # confidence interval fill color
+              se = TRUE) + # show confidence interval around line
+  labs(x = "Ocean Temperature (°C)", # label x-axis with units
+       y = "Kelp Frond Elongation Rate (cm day⁻¹)", # label y-axis with units
+       title = "Relationship between ocean temperature and kelp frond elongation rate") +
+  theme_bw() + # non-default theme
+  theme(panel.grid.minor = element_blank()) # remove minor gridlines to reduce clutter
+```
+
+## 1c.Check your assumptions and run your test
+
+```{r}
+
+# check normality of ocean temperature using a QQ plot
+ggplot(data = kelp,
+       aes(sample = temp_c)) + # check temperature variable
+  geom_qq() + # plot sample quantiles against theoretical quantiles
+  geom_qq_line(color = "blue") + # add reference line for normality
+  labs(title = "QQ plot: Ocean Temperature (°C)") +
+  theme_bw() # non-default theme
+
+# check normality of kelp elongation rate using a QQ plot
+ggplot(data = kelp,
+       aes(sample = kelp_elong)) + # check elongation rate variable
+  geom_qq() + # plot sample quantiles against theoretical quantiles
+  geom_qq_line(color = "blue") + # add reference line for normality
+  labs(title = "QQ plot: Kelp Frond Elongation Rate (cm day⁻¹)") +
+  theme_bw() # non-default theme
+
+# run Pearson correlation test between ocean temperature and kelp elongation rate
+cor.test(kelp$temp_c, # predictor variable: ocean temperature
+         kelp$kelp_elong, # response variable: kelp frond elongation rate
+         method = "pearson") # specify Pearson method for linear relationship
+```
+
+### 1d.
+
+To evaluate the strength of the relationship between ocean temperature and giant kelp frond elongation rate, I used a Pearson correlation coefficient because both variables are continuous and approximately normally distributed, and the relationship appears linear. The results indicate a significant negative relationship between ocean temperature and kelp frond elongation rate (Pearson's r = -0.68, t(30) = -5.19, p \< 0.001).
