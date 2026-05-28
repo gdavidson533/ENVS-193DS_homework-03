@@ -88,3 +88,15 @@ Ocean temperature was significantly negatively correlated with giant kelp frond 
 
 ## 1e. Test implications
 Our results indicate that higher ocean temperatures are associated with significantly lower giant kelp frond elongation rates, suggesting that ongoing ocean warming due to climate change may slow kelp growth. This is critical for our team to understand because reduced growth rates could diminish kelp forest biomass and structural complexity over time, threatening the many species that depend on these ecosystems. As ocean temperatures continue to rise, we should prioritize monitoring kelp growth rates in warmer regions as early indicators of broader kelp forest decline.
+
+## 1f. Double check your own work
+```{r}
+#| label: kelp_spearman
+# run Spearman rank correlation as the alternative non-parametric test
+# does not assume normality, measures monotonic relationship
+cor.test(kelp$temp_c, # predictor variable: ocean temperature
+         kelp$kelp_elong, # response variable: kelp frond elongation rate
+         method = "spearman") # specify Spearman method
+```
+
+Both the Pearson correlation (r = -0.69, t(30) = -5.19, p < 0.001) and the Spearman rank correlation (rho = -0.69, S = 9216.1, p < 0.001) led to the same decision to reject the null hypothesis that there is no relationship between ocean temperature and giant kelp frond elongation rate. Both tests revealed a strong negative relationship of nearly identical magnitude, meaning that both would lead to the same interpretation that higher ocean temperatures are associated with lower kelp frond elongation rates. The close agreement between the two tests strengthens confidence in the conclusion, as the Pearson result indicates the relationship is linear while the Spearman result confirms it is also monotonic.
