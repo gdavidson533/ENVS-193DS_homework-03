@@ -81,7 +81,10 @@ cor.test(kelp$temp_c, # predictor variable: ocean temperature
          method = "pearson") # specify Pearson method for linear relationship
 ```
 
-### 1d.
+## 1d.
 
-To evaluate the strength of the relationship between ocean temperature and giant kelp frond elongation rate, I used a Pearson correlation coefficient because both variables are continuous and approximately normally distributed, and the relationship appears linear. The results indicate a significant negative relationship between ocean temperature and kelp frond elongation rate (Pearson's r = -0.68, t(30) = -5.19, p \< 0.001).
+To evaluate the strength of the relationship between ocean temperature and giant kelp frond elongation rate, I used a Pearson correlation coefficient because both variables are continuous and approximately normally distributed, and the scatterplot suggested a linear relationship between them.
+Ocean temperature was significantly negatively correlated with giant kelp frond elongation rate, meaning that kelp growing in warmer water tended to have slower growth rates (Pearson's r = -0.69, t(30) = -5.19, p < 0.001). This suggests that as ocean temperatures increase due to climate change, we would expect giant kelp fronds to grow more slowly, which could have important consequences for the overall health and structure of kelp forest ecosystems.
 
+## 1e. Test implications
+Our results indicate that higher ocean temperatures are associated with significantly lower giant kelp frond elongation rates, suggesting that ongoing ocean warming due to climate change may slow kelp growth. This is critical for our team to understand because reduced growth rates could diminish kelp forest biomass and structural complexity over time, threatening the many species that depend on these ecosystems. As ocean temperatures continue to rise, we should prioritize monitoring kelp growth rates in warmer regions as early indicators of broader kelp forest decline.
