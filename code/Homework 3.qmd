@@ -84,3 +84,4 @@ cor.test(kelp$temp_c, # predictor variable: ocean temperature
 ### 1d.
 
 To evaluate the strength of the relationship between ocean temperature and giant kelp frond elongation rate, I used a Pearson correlation coefficient because both variables are continuous and approximately normally distributed, and the relationship appears linear. The results indicate a significant negative relationship between ocean temperature and kelp frond elongation rate (Pearson's r = -0.68, t(30) = -5.19, p \< 0.001).
+
