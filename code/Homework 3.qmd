@@ -170,5 +170,8 @@ ggplot(data = my_data,
   theme(panel.grid.minor = element_blank()) # reduce visual clutter
 ```
 
+## 2b. Captions
 
+Figure 1. Focus level (1–5 scale) on work days versus non-work days, based on 13 days of personal observations. Points show individual daily observations, larger points show group means, and error bars represent ± 1 standard deviation. Focus level was slightly lower on work days compared to non-work days, with greater variability on work days.
+Figure 2. Relationship between daily water intake (liters) and focus level (1–5 scale) across 13 days of personal observation. Each point represents one day. A positive association between water intake and focus level is visible, suggesting that higher water intake may be associated with higher focus, though the sample size is small and this pattern should be interpreted cautiously.
 
