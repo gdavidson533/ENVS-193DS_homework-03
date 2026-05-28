@@ -184,12 +184,19 @@ An affective visualization for my personal data could take the form of a hand-dr
 ![Initial Sketch for drawing](../sketch.png)
 
 ## 3c. Draft 
-![Initial Sketch for drawing](../draft.png)
+![Draft of effective visualization ](../draft.png)
 
 ## 3d. Artist Statement
 Content: This piece shows 13 days of personal observations tracking daily water intake and focus level, with additional variables including number of study sessions and whether the day was a work day or rest day, exploring whether staying hydrated is associated with feeling more mentally focused.
 Influences: I was directly influenced by Stefanie Posavec and Giorgia Lupi's Dear Data project, which encodes personal behavioral data into dense hand-drawn postcards using repeated simple shapes with a legend, making data feel intimate and personal rather than clinical.
 Form: The piece is a hand-drawn postcard created with colored pencils and pen on paper, designed to be small and personal in the style of Dear Data.
 Process: I first mapped each variable to a visual element — water intake to fill level, focus to color, study sessions to bubbles, and work day to sun or moon symbols. I then sketched all 13 glasses in pencil, added the water fill and color for each day using the data table, drew the bubbles and symbols, and finished with a hand-drawn legend in the corner.
+
+
+## 3e. Slides
+
+[View slides here](https://canva.link/nfhwbs3ko47iwd1)
+
+
 
 
