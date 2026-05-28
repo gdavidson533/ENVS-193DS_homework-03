@@ -175,3 +175,7 @@ ggplot(data = my_data,
 Figure 1. Focus level (1–5 scale) on work days versus non-work days, based on 13 days of personal observations. Points show individual daily observations, larger points show group means, and error bars represent ± 1 standard deviation. Focus level was slightly lower on work days compared to non-work days, with greater variability on work days.
 Figure 2. Relationship between daily water intake (liters) and focus level (1–5 scale) across 13 days of personal observation. Each point represents one day. A positive association between water intake and focus level is visible, suggesting that higher water intake may be associated with higher focus, though the sample size is small and this pattern should be interpreted cautiously.
 
+# Problem 3. Affective visualization
+
+## 3a. Description
+An affective visualization for my personal data could take the form of a hand-drawn weekly calendar where each day is represented as a water droplet shape, with the size of the droplet corresponding to how much water I drank that day and the color (ranging from pale yellow to deep blue) representing my focus level for that day. Days where I worked could be marked with a small sun icon, while rest days could have a moon. This format would make the data feel personal and embodied — the viewer would literally see how "full" or "energized" each day felt, connecting hydration and mental energy in an intuitive visual language that goes beyond what a standard chart could convey.
