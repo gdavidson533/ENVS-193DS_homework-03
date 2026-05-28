@@ -100,3 +100,75 @@ cor.test(kelp$temp_c, # predictor variable: ocean temperature
 ```
 
 Both the Pearson correlation (r = -0.69, t(30) = -5.19, p < 0.001) and the Spearman rank correlation (rho = -0.69, S = 9216.1, p < 0.001) led to the same decision to reject the null hypothesis that there is no relationship between ocean temperature and giant kelp frond elongation rate. Both tests revealed a strong negative relationship of nearly identical magnitude, meaning that both would lead to the same interpretation that higher ocean temperatures are associated with lower kelp frond elongation rates. The close agreement between the two tests strengthens confidence in the conclusion, as the Pearson result indicates the relationship is linear while the Spearman result confirms it is also monotonic.
+
+# Problem 2. Personal Data 
+
+## 2a. Updating visualizations
+
+```{r}
+#| label: personal_data_summary
+# summarize mean focus level and SD by work day
+my_data_summary <- my_data |>
+  group_by(work_day) |> # group by whether it was a work day
+  summarize(
+    mean_focus = mean(focus_level), # calculate mean focus level per group
+    sd_focus = sd(focus_level) # calculate standard deviation per group
+  )
+```
+
+```{r}
+#| label: personal_data_plot_1
+
+# plot focus level by work day with raw data, mean, and error bars
+ggplot() +
+  geom_jitter(data = my_data, # plot raw individual data points
+              aes(x = work_day,
+                  y = focus_level,
+                  color = work_day),
+              width = 0.1, # jitter horizontally only
+              height = 0,
+              size = 3,
+              alpha = 0.7) + # slight transparency
+  geom_point(data = my_data_summary, # plot group mean as larger point
+             aes(x = work_day,
+                 y = mean_focus,
+                 color = work_day),
+             size = 5) +
+  geom_errorbar(data = my_data_summary, # plot SD as error bars
+                aes(x = work_day,
+                    ymin = mean_focus - sd_focus, # lower bound of SD
+                    ymax = mean_focus + sd_focus, # upper bound of SD
+                    color = work_day),
+                width = 0.1) +
+  scale_color_manual(values = c("yes" = "#D55E00", # non-default colors
+                                "no" = "#0072B2")) +
+  labs(x = "Work Day (yes/no)", # label x-axis
+       y = "Focus Level (1-5)", # label y-axis with units
+       subtitle = paste("Most recent observation:", max(my_data$date))) + # most recent date
+  theme_bw() + # non-default theme
+  theme(legend.position = "none", # remove redundant legend
+        panel.grid.minor = element_blank()) # reduce visual clutter
+```
+
+
+```{r}
+
+# plot water intake vs focus level as scatterplot with trend line
+ggplot(data = my_data,
+       aes(x = water_intake_L, # water intake on x-axis
+           y = focus_level)) + # focus level on y-axis
+  geom_point(color = "#009E73", # non-default color
+             size = 3,
+             alpha = 0.7) + # slight transparency
+  geom_smooth(method = "lm", # add linear trend line
+              color = "gray40", # non-default line color
+              se = TRUE) + # show confidence interval
+  labs(x = "Water Intake (liters)", # label x-axis with units
+       y = "Focus Level (1-5)", # label y-axis with units
+       subtitle = paste("Most recent observation:", max(my_data$date))) + # most recent date
+  theme_bw() + # non-default theme
+  theme(panel.grid.minor = element_blank()) # reduce visual clutter
+```
+
+
+
