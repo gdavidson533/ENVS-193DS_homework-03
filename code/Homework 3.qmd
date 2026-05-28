@@ -206,3 +206,7 @@ The authors of Estrada-Araoz et al. 2023 use the Pearson correlation coefficient
 coefficients between environmental education and pro-environmental 
 behavior variables.](../table4.png)
 
+## 4b. Visual clarity
+Since the authors presented their statistics in a correlation matrix table rather than a figure, I will evaluate how clearly the table represents the data underlying the tests. Table 4 clearly organizes all variables and their subdimensions as both rows and columns, making every pairwise Pearson correlation coefficient easy to locate by finding the intersection of any two variables. The authors include asterisks to denote statistical significance at p < 0.05, which helps the reader quickly identify which relationships are meaningful without needing to interpret raw p-values. However the table does not include confidence intervals, sample sizes for individual correlations, or p-values themselves, which would have allowed readers to more fully evaluate the precision and strength of each estimate.
+
+
