@@ -36,6 +36,7 @@ The two appropriate tests to determine the strength of the relationship between 
 
 ```{r}
 #| label: kelp_visualization
+#| message: false
 
 # create scatterplot of ocean temperature vs kelp frond elongation rate
 ggplot(data = kelp, # use kelp data frame
@@ -48,9 +49,10 @@ ggplot(data = kelp, # use kelp data frame
               color = "darkorange", # non-default line color
               fill = "lightyellow", # confidence interval fill color
               se = TRUE) + # show confidence interval around line
-  labs(x = "Ocean Temperature (°C)", # label x-axis with units
-       y = "Kelp Frond Elongation Rate (cm day⁻¹)", # label y-axis with units
-       title = "Relationship between ocean temperature and kelp frond elongation rate") +
+ labs(x = "Ocean Temperature (°C)", # label x-axis with units
+     y = expression("Kelp Frond Elongation Rate (cm day"^-1*")"), # label y-axis with units
+     # ^-1 creates superscript negative one, * joins it to closing parenthesis without a space
+     title = "Relationship between ocean temperature and kelp frond elongation rate")  +
   theme_bw() + # non-default theme
   theme(panel.grid.minor = element_blank()) # remove minor gridlines to reduce clutter
 ```
@@ -58,6 +60,7 @@ ggplot(data = kelp, # use kelp data frame
 ## 1c.Check your assumptions and run your test
 
 ```{r}
+#| message: false
 
 # check normality of ocean temperature using a QQ plot
 ggplot(data = kelp,
@@ -72,7 +75,7 @@ ggplot(data = kelp,
        aes(sample = kelp_elong)) + # check elongation rate variable
   geom_qq() + # plot sample quantiles against theoretical quantiles
   geom_qq_line(color = "blue") + # add reference line for normality
-  labs(title = "QQ plot: Kelp Frond Elongation Rate (cm day⁻¹)") +
+ labs(title = expression("QQ plot: Kelp Frond Elongation Rate (cm day"^-1*")")) +
   theme_bw() # non-default theme
 
 # run Pearson correlation test between ocean temperature and kelp elongation rate
@@ -81,7 +84,7 @@ cor.test(kelp$temp_c, # predictor variable: ocean temperature
          method = "pearson") # specify Pearson method for linear relationship
 ```
 
-## 1d.
+## 1d.Results communication
 
 To evaluate the strength of the relationship between ocean temperature and giant kelp frond elongation rate, I used a Pearson correlation coefficient because both variables are continuous and approximately normally distributed, and the scatterplot suggested a linear relationship between them. Ocean temperature was significantly negatively correlated with giant kelp frond elongation rate, meaning that kelp growing in warmer water tended to have slower growth rates (Pearson's r = -0.69, t(30) = -5.19, p \< 0.001). This suggests that as ocean temperatures increase due to climate change, we would expect giant kelp fronds to grow more slowly, which could have important consequences for the overall health and structure of kelp forest ecosystems.
 
@@ -93,6 +96,8 @@ Our results indicate that higher ocean temperatures are associated with signific
 
 ```{r}
 #| label: kelp_spearman
+#| message: false
+#| warning: false
 # run Spearman rank correlation as the alternative non-parametric test
 # does not assume normality, measures monotonic relationship
 cor.test(kelp$temp_c, # predictor variable: ocean temperature
@@ -108,6 +113,7 @@ Both the Pearson correlation (r = -0.69, t(30) = -5.19, p \< 0.001) and the Spea
 
 ```{r}
 #| label: personal_data_summary
+#| message: false
 # summarize mean focus level and SD by work day
 my_data_summary <- my_data |>
   group_by(work_day) |> # group by whether it was a work day
@@ -119,6 +125,7 @@ my_data_summary <- my_data |>
 
 ```{r}
 #| label: personal_data_plot_1
+#| message: false
 
 # plot focus level by work day with raw data, mean, and error bars
 ggplot() +
@@ -145,13 +152,14 @@ ggplot() +
                                 "no" = "#0072B2")) +
   labs(x = "Work Day (yes/no)", # label x-axis
        y = "Focus Level (1-5)", # label y-axis with units
-       subtitle = paste("Most recent observation:", max(my_data$date))) + # most recent date
+       subtitle = paste("Most recent observation:", tail(my_data$date, 1))) + # most recent date))) + # most recent date
   theme_bw() + # non-default theme
   theme(legend.position = "none", # remove redundant legend
         panel.grid.minor = element_blank()) # reduce visual clutter
 ```
 
 ```{r}
+#| message: false
 
 # plot water intake vs focus level as scatterplot with trend line
 ggplot(data = my_data,
@@ -165,14 +173,15 @@ ggplot(data = my_data,
               se = TRUE) + # show confidence interval
   labs(x = "Water Intake (liters)", # label x-axis with units
        y = "Focus Level (1-5)", # label y-axis with units
-       subtitle = paste("Most recent observation:", max(my_data$date))) + # most recent date
+       subtitle = paste("Most recent observation:", tail(my_data$date, 1))) + # most recent date, max(my_data$date))) + # most recent date
   theme_bw() + # non-default theme
   theme(panel.grid.minor = element_blank()) # reduce visual clutter
 ```
 
 ## 2b. Captions
 
-Figure 1. Focus level (1–5 scale) on work days versus non-work days, based on 13 days of personal observations. Points show individual daily observations, larger points show group means, and error bars represent ± 1 standard deviation. Focus level was slightly lower on work days compared to non-work days, with greater variability on work days. Figure 2. Relationship between daily water intake (liters) and focus level (1–5 scale) across 13 days of personal observation. Each point represents one day. A positive association between water intake and focus level is visible, suggesting that higher water intake may be associated with higher focus, though the sample size is small and this pattern should be interpreted cautiously.
+Figure 1. Focus level (1–5 scale) on work days versus non-work days, based on 13 days of personal observations. Points show individual daily observations, larger points show group means, and error bars represent ± 1 standard deviation. Focus level was slightly lower on work days compared to non-work days, with greater variability on work days.
+Figure 2. Relationship between daily water intake (liters) and focus level (1–5 scale) across 13 days of personal observation. Each point represents one day. A positive association between water intake and focus level is visible, suggesting that higher water intake may be associated with higher focus, though the sample size is small and this pattern should be interpreted cautiously.
 
 # Problem 3. Affective visualization
 
