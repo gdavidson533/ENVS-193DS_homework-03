@@ -153,7 +153,8 @@ ggplot() +
                                 "no" = "#0072B2")) +
   labs(x = "Work Day (yes/no)", # label x-axis
        y = "Focus Level (1-5)", # label y-axis with units
-       subtitle = paste("Most recent observation:", tail(my_data$date, 1))) + # most recent date))) + # most recent date
+       subtitle = paste("Most recent observation:", tail(my_data$date, 1))) + 
+  # most recent date))) + # most recent date
   theme_bw() + # non-default theme
   theme(legend.position = "none", # remove redundant legend
         panel.grid.minor = element_blank()) # reduce visual clutter
@@ -174,7 +175,8 @@ ggplot(data = my_data,
               se = TRUE) + # show confidence interval
   labs(x = "Water Intake (liters)", # label x-axis with units
        y = "Focus Level (1-5)", # label y-axis with units
-       subtitle = paste("Most recent observation:", tail(my_data$date, 1))) + # most recent date, max(my_data$date))) + # most recent date
+       subtitle = paste("Most recent observation:", tail(my_data$date, 1))) + 
+  # most recent date, max(my_data$date))) + # most recent date
   theme_bw() + # non-default theme
   theme(panel.grid.minor = element_blank()) # reduce visual clutter
 ```
