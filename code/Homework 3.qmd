@@ -50,11 +50,13 @@ ggplot(data = kelp, # use kelp data frame
               fill = "lightyellow", # confidence interval fill color
               se = TRUE) + # show confidence interval around line
  labs(x = "Ocean Temperature (°C)", # label x-axis with units
-     y = expression("Kelp Frond Elongation Rate (cm day"^-1*")"), # label y-axis with units
+     y = expression("Kelp Frond Elongation Rate (cm day"^-1*")"), 
+     # label y-axis with units
      # ^-1 creates superscript negative one, * joins it to closing parenthesis without a space
      title = "Relationship between ocean temperature and kelp frond elongation rate")  +
   theme_bw() + # non-default theme
-  theme(panel.grid.minor = element_blank()) # remove minor gridlines to reduce clutter
+  theme(panel.grid.minor = element_blank()) 
+# remove minor gridlines to reduce clutter
 ```
 
 ## 1c.Check your assumptions and run your test
@@ -77,7 +79,6 @@ ggplot(data = kelp,
   geom_qq_line(color = "blue") + # add reference line for normality
  labs(title = expression("QQ plot: Kelp Frond Elongation Rate (cm day"^-1*")")) +
   theme_bw() # non-default theme
-
 # run Pearson correlation test between ocean temperature and kelp elongation rate
 cor.test(kelp$temp_c, # predictor variable: ocean temperature
          kelp$kelp_elong, # response variable: kelp frond elongation rate
@@ -180,8 +181,7 @@ ggplot(data = my_data,
 
 ## 2b. Captions
 
-Figure 1. Focus level (1–5 scale) on work days versus non-work days, based on 13 days of personal observations. Points show individual daily observations, larger points show group means, and error bars represent ± 1 standard deviation. Focus level was slightly lower on work days compared to non-work days, with greater variability on work days.
-Figure 2. Relationship between daily water intake (liters) and focus level (1–5 scale) across 13 days of personal observation. Each point represents one day. A positive association between water intake and focus level is visible, suggesting that higher water intake may be associated with higher focus, though the sample size is small and this pattern should be interpreted cautiously.
+Figure 1. Focus level (1–5 scale) on work days versus non-work days, based on 13 days of personal observations. Points show individual daily observations, larger points show group means, and error bars represent ± 1 standard deviation. Focus level was slightly lower on work days compared to non-work days, with greater variability on work days. Figure 2. Relationship between daily water intake (liters) and focus level (1–5 scale) across 13 days of personal observation. Each point represents one day. A positive association between water intake and focus level is visible, suggesting that higher water intake may be associated with higher focus, though the sample size is small and this pattern should be interpreted cautiously.
 
 # Problem 3. Affective visualization
 
@@ -209,17 +209,18 @@ Content: This piece shows 13 days of personal observations tracking daily water 
 
 ## 4a. Revisit and summarize
 
-The authors of Estrada-Araoz et al. 2023 use the Pearson correlation coefficient to address their main research question of whether environmental education is significantly related to pro-environmental behavior in regular basic education students in the Peruvian Amazon. The response variable is pro-environmental behavior score and the predictor variable is environmental education score, both measured via questionnaire. The Pearson correlation tests whether there is a significant linear relationship between the two scores, and a significant result (p < 0.05) would indicate that students who perceive their environmental education as more adequate also tend to engage in pro-environmental behaviors more frequently.
+The authors of Estrada-Araoz et al. 2023 use the Pearson correlation coefficient to address their main research question of whether environmental education is significantly related to pro-environmental behavior in regular basic education students in the Peruvian Amazon. The response variable is pro-environmental behavior score and the predictor variable is environmental education score, both measured via questionnaire. The Pearson correlation tests whether there is a significant linear relationship between the two scores, and a significant result (p \< 0.05) would indicate that students who perceive their environmental education as more adequate also tend to engage in pro-environmental behaviors more frequently.
 
-![Table 4 from Estrada-Araoz et al. 2023 showing Pearson correlation 
-coefficients between environmental education and pro-environmental 
-behavior variables.](../table4.png)
+![Table 4 from Estrada-Araoz et al. 2023 showing Pearson correlation coefficients between environmental education and pro-environmental behavior variables.](../table4.png)
 
 ## 4b. Visual clarity
-Since the authors presented their statistics in a correlation matrix table rather than a figure, I will evaluate how clearly the table represents the data underlying the tests. Table 4 clearly organizes all variables and their subdimensions as both rows and columns, making every pairwise Pearson correlation coefficient easy to locate by finding the intersection of any two variables. The authors include asterisks to denote statistical significance at p < 0.05, which helps the reader quickly identify which relationships are meaningful without needing to interpret raw p-values. However the table does not include confidence intervals, sample sizes for individual correlations, or p-values themselves, which would have allowed readers to more fully evaluate the precision and strength of each estimate.
+
+Since the authors presented their statistics in a correlation matrix table rather than a figure, I will evaluate how clearly the table represents the data underlying the tests. Table 4 clearly organizes all variables and their subdimensions as both rows and columns, making every pairwise Pearson correlation coefficient easy to locate by finding the intersection of any two variables. The authors include asterisks to denote statistical significance at p \< 0.05, which helps the reader quickly identify which relationships are meaningful without needing to interpret raw p-values. However the table does not include confidence intervals, sample sizes for individual correlations, or p-values themselves, which would have allowed readers to more fully evaluate the precision and strength of each estimate.
 
 ## 4c. Aesthetic clarity
+
 The correlation matrix in Table 4 handles visual clutter reasonably well, there are no shaded cells, excessive borders, or redundant decorative elements, giving it a relatively high data-to-ink ratio. The asterisks used to denote statistical significance add meaningful information without adding unnecessary visual noise. However, the table does not use any bolding or italics to draw the reader's eye to the most important correlations, such as the r = 0.877 between overall environmental education and pro-environmental behavior, meaning the reader must scan every cell to find the key findings rather than being guided to them visually. Additionally, the lower triangle of the matrix is a mirror of the upper triangle and adds redundant ink without adding new information.
 
 ## 4d. Recommendations
+
 I would recommend replacing the correlation matrix table with a heatmap figure, where the x- and y-axes list all eight variables and each cell is filled with a color gradient (e.g., white to dark teal) proportional to the Pearson r value. Significant correlations could be marked with an asterisk inside the cell. This would make it immediately visually clear which variable pairs have the strongest relationships without requiring the reader to scan rows of numbers, and the color encoding would allow at-a-glance comparison across all pairs. Including a color scale legend would make the figure self-explanatory, improving both clarity and accessibility.
