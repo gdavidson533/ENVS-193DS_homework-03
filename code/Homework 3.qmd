@@ -37,7 +37,6 @@ The two appropriate tests to determine the strength of the relationship between 
 ```{r}
 #| label: kelp_visualization
 #| message: false
-
 # create scatterplot of ocean temperature vs kelp frond elongation rate
 ggplot(data = kelp, # use kelp data frame
        aes(x = temp_c, # ocean temperature on x-axis
@@ -45,22 +44,14 @@ ggplot(data = kelp, # use kelp data frame
   geom_point(color = "darkgreen", # non-default point color
              size = 3,
              alpha = 0.7) + # slight transparency on points
-  geom_smooth(method = "lm", # add linear trend line
-              color = "darkorange", # non-default line color
-              fill = "lightyellow", # confidence interval fill color
-              se = TRUE) + # show confidence interval around line
- labs(x = "Ocean Temperature (°C)", # label x-axis with units
-     y = expression("Kelp Frond Elongation Rate (cm day"^-1*")"), 
-     # label y-axis with units
-     # ^-1 creates superscript negative one, * joins it to closing parenthesis without a space
-     title = "Relationship between ocean temperature and kelp frond elongation rate")  +
+  labs(x = "Ocean Temperature (°C)", # label x-axis with units
+       y = expression("Kelp Frond Elongation Rate (cm day"^-1*")"),
+       title = "Relationship between ocean temperature and kelp frond elongation rate") +
   theme_bw() + # non-default theme
-  theme(panel.grid.minor = element_blank()) 
-# remove minor gridlines to reduce clutter
+  theme(panel.grid.minor = element_blank()) # remove minor gridlines to reduce clutter
 ```
 
 ## 1c.Check your assumptions and run your test
-
 ```{r}
 #| message: false
 
@@ -77,17 +68,20 @@ ggplot(data = kelp,
        aes(sample = kelp_elong)) + # check elongation rate variable
   geom_qq() + # plot sample quantiles against theoretical quantiles
   geom_qq_line(color = "blue") + # add reference line for normality
- labs(title = expression("QQ plot: Kelp Frond Elongation Rate (cm day"^-1*")")) +
+  labs(title = expression("QQ plot: Kelp Frond Elongation Rate (cm day"^-1*")")) +
   theme_bw() # non-default theme
+
 # run Pearson correlation test between ocean temperature and kelp elongation rate
 cor.test(kelp$temp_c, # predictor variable: ocean temperature
          kelp$kelp_elong, # response variable: kelp frond elongation rate
          method = "pearson") # specify Pearson method for linear relationship
 ```
 
+Both variables were assessed for normality using QQ plots. Ocean temperature (°C) appeared approximately normally distributed, as the points followed the reference line closely with only minor deviations at the tails. Kelp frond elongation rate also appeared approximately normally distributed, with points tracking the reference line well. Because both variables met the normality assumption and the relationship appeared linear in the scatterplot, I proceeded with the Pearson correlation coefficient.
+
 ## 1d.Results communication
 
-To evaluate the strength of the relationship between ocean temperature and giant kelp frond elongation rate, I used a Pearson correlation coefficient because both variables are continuous and approximately normally distributed, and the scatterplot suggested a linear relationship between them. Ocean temperature was significantly negatively correlated with giant kelp frond elongation rate, meaning that kelp growing in warmer water tended to have slower growth rates (Pearson's r = -0.69, t(30) = -5.19, p \< 0.001). This suggests that as ocean temperatures increase due to climate change, we would expect giant kelp fronds to grow more slowly, which could have important consequences for the overall health and structure of kelp forest ecosystems.
+To evaluate the strength of the relationship between ocean temperature and giant kelp frond elongation rate, I used a Pearson correlation coefficient because both variables are continuous and approximately normally distributed (confirmed via QQ plots), and the scatterplot suggested a linear relationship. The results indicate a statistically significant, moderate negative relationship between ocean temperature and kelp frond elongation rate (Pearson's r = -0.68, t(30) = -5.19, p < 0.001), meaning that as ocean temperature increases, kelp frond elongation rate tends to decrease.
 
 ## 1e. Test implications
 
@@ -162,21 +156,16 @@ ggplot() +
 
 ```{r}
 #| message: false
-
-# plot water intake vs focus level as scatterplot with trend line
+# plot water intake vs focus level as scatterplot
 ggplot(data = my_data,
        aes(x = water_intake_L, # water intake on x-axis
            y = focus_level)) + # focus level on y-axis
   geom_point(color = "#009E73", # non-default color
              size = 3,
              alpha = 0.7) + # slight transparency
-  geom_smooth(method = "lm", # add linear trend line
-              color = "gray40", # non-default line color
-              se = TRUE) + # show confidence interval
   labs(x = "Water Intake (liters)", # label x-axis with units
        y = "Focus Level (1-5)", # label y-axis with units
-       subtitle = paste("Most recent observation:", tail(my_data$date, 1))) + 
-  # most recent date, max(my_data$date))) + # most recent date
+       subtitle = paste("Most recent observation:", tail(my_data$date, 1))) +
   theme_bw() + # non-default theme
   theme(panel.grid.minor = element_blank()) # reduce visual clutter
 ```
